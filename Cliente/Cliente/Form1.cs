@@ -23,7 +23,7 @@ namespace Cliente
         public Form1()
         {
             InitializeComponent();
-            
+            c = oClient.Datos().ToList();
             PaginacionTotal = c.Count / SizePaginacion;
             cp = c.Skip(PaginacionActual * SizePaginacion).Take(SizePaginacion).ToList();
             dataGridView1.Columns.Add("ID", "ID");
@@ -31,7 +31,6 @@ namespace Cliente
             dataGridView1.Columns.Add("Codigo Pais", "Codigo Pais");
             dataGridView1.Columns.Add("Distrito", "Distrito");
             dataGridView1.Columns.Add("Poblacion", "Poblacion");
-            c = oClient.Datos().ToList();
             foreach (SOAPService.City ciu in cp)
             {
                 dataGridView1.Rows.Add(ciu.Id, ciu.Name,ciu.CountryCode, ciu.District, ciu.Population);
